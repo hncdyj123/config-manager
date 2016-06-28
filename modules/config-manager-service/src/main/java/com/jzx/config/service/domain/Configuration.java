@@ -1,5 +1,10 @@
 package com.jzx.config.service.domain;
-
+/**
+ * 配置解析实体类
+ * @author hncdyj123@163.com
+ * @date 2016年6月28日 上午9:15:49
+ *
+ */
 public class Configuration {
 	// groupId
 	private String groupId;

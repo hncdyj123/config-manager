@@ -9,6 +9,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 配置文件类
+ * 
+ * @author hncdyj123@163.com
+ * @date 2016年6月28日 上午9:14:27
+ *
+ */
 public class PropertyConfigurer {
 	private static Logger LOGGER = LoggerFactory.getLogger(PropertyConfigurer.class);
 	public static Properties props = null;

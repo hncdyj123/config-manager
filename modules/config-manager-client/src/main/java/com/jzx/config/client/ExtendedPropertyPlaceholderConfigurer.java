@@ -13,7 +13,12 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 
 import com.jzx.config.core.ZkClientConnect;
-
+/**
+ * spring配置扩展
+ * @author hncdyj123@163.com
+ * @date 2016年6月28日 上午9:14:02
+ *
+ */
 public class ExtendedPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
 
 	private static Logger logger = LoggerFactory.getLogger(ExtendedPropertyPlaceholderConfigurer.class);

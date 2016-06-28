@@ -11,6 +11,13 @@ import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * zk连接实体
+ * 
+ * @author hncdyj123@163.com
+ * @date 2016年6月28日 上午9:14:57
+ *
+ */
 public class ZkClientConnect {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ZkClientConnect.class);
 	private ZkClient zkClient;

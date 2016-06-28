@@ -6,6 +6,13 @@ import com.jzx.config.client.PropertyConfigurer;
 import com.jzx.config.core.ZkClientConnect;
 import com.jzx.config.service.domain.Configuration;
 
+/**
+ * 配置管理service实现类
+ * 
+ * @author hncdyj123@163.com
+ * @date 2016年6月28日 上午9:16:04
+ *
+ */
 @SuppressWarnings("static-access")
 @Service
 public class ConfigurationServiceImpl implements ConfigurationService {
