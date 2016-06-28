@@ -70,7 +70,6 @@ zk.address=192.168.8.144:2181
 	* 日志包冲突，`config-manager`里面采用的logback，如果您项目用的是log4j，可以自己桥接到log4j上面去。
 	* **其它问题，请自行参考config-manager-example示例demo**
 
-
 ###web界面的使用
 	
 * 将`config-manager-web` `target` `config-manager-web`下面部署到`tomcat` `webapps`目录下，启动tomcat。
@@ -80,6 +79,7 @@ zk.address=192.168.8.144:2181
 	**时时更新效果图：
 	![image](https://github.com/hncdyj123/config-manager/blob/master/images/effect2.jpg)
  
+
 ##我的博客
 
 * http://blog.csdn.net/hncdyj/article/
