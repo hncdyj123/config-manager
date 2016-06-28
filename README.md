@@ -74,9 +74,9 @@ zk.address=192.168.8.144:2181
 	
 * 将`config-manager-web` `target`目录下 `config-manager-web`下面部署到`tomcat` `webapps`目录下，启动tomcat。
 * 访问http://localhost:8080/config-manager-web/index/index.html。
-	** web效果图如下：
+	* web效果图如下：
 	![image](https://github.com/hncdyj123/config-manager/blob/master/images/effect1.jpg)
-	** 时时更新效果图：
+	* 时时更新效果图：
 	![image](https://github.com/hncdyj123/config-manager/blob/master/images/effect2.jpg)
  
 
@@ -99,6 +99,3 @@ zk.address=192.168.8.144:2181
 
 * 邮件(hncdyj123#163.com, 把#换成@)
 
-
-http://localhost:8080/config-manager-web/index/index.html
-http://localhost:8080/config-manager-web/index/query.html
