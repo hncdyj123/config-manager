@@ -72,11 +72,11 @@ zk.address=192.168.8.144:2181
 
 ###web界面的使用
 	
-* 将`config-manager-web` `target` `config-manager-web`下面部署到`tomcat` `webapps`目录下，启动tomcat。
-*访问http://localhost:8080/config-manager-web/index/index.html。
-	**web效果图如下：
+* 将`config-manager-web` `target`目录下 `config-manager-web`下面部署到`tomcat` `webapps`目录下，启动tomcat。
+* 访问http://localhost:8080/config-manager-web/index/index.html。
+	** web效果图如下：
 	![image](https://github.com/hncdyj123/config-manager/blob/master/images/effect1.jpg)
-	**时时更新效果图：
+	** 时时更新效果图：
 	![image](https://github.com/hncdyj123/config-manager/blob/master/images/effect2.jpg)
  
 
