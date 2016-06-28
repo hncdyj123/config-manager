@@ -11,18 +11,20 @@
 * `zookeeper`配置管理，支持集群。
 * 支持`多点部署`。
 * 无缝切换配置。
+* 如果不是启动就load到内存的配置数据，可以通过`PropertyConfigurer.getString(key);`获取配置。
 
 ##使用说明
 
 ###环境配置准备
 
-* 搭建一个zookeeper环境。
-* git下载源代码。
+* 搭建一个`zookeeper`环境。
+* 搭建一个`tomcat`环境。
+* git下载源代码。(https://github.com/hncdyj123/config-manager)
 * 切换目录到config-manager下面执行maven install。
 
 ###项目配置
 
-* 在自己项目下pom.xml新增maven依赖。
+* 在自己项目下pom.xml新增maven依赖：
 ```xml
 <dependency>
 	<groupId>com.jzx.config</groupId>
@@ -42,7 +44,7 @@
 </dependency>
 ```
 
-* 在resources下面新增一个app.properties`(名称可以随意)`
+* 在resources下面新增一个app.properties`(名称可以随意)`：
 ```
 // 配置文件组
 deploy.group=ams
@@ -52,7 +54,7 @@ deploy.dataId=dev
 zk.address=192.168.8.144:2181
 ```
 
-* 在spring配置中新增如下配置：
+* 在spring配置中新增如下配置(加载上一步的properties文件)：
 ```xml
 <bean id="propertyConfigurer" class="com.jzx.config.client.ExtendedPropertyPlaceholderConfigurer">
 	<property name="locations">
@@ -63,6 +65,21 @@ zk.address=192.168.8.144:2181
 </bean>
 ```
 
+* **可能会遇到的问题**
+	* spring包冲突，如果您项目中用的spring包版本大于3.2.8，可以`exclusion` `config-manager` 的spring配置。 
+	* 日志包冲突，`config-manager`里面采用的logback，如果您项目用的是log4j，可以自己桥接到log4j上面去。
+	* **其它问题，请自行参考config-manager-example示例demo**
+
+
+###web界面的使用
+	
+* 将`config-manager-web` `target` `config-manager-web`下面部署到`tomcat` `webapps`目录下，启动tomcat。
+*访问http://localhost:8080/config-manager-web/index/index.html。
+	**web效果图如下：
+	![image](https://github.com/hncdyj123/config-manager/blob/master/images/effect1.jpg)
+	**时时更新效果图：
+	![image](https://github.com/hncdyj123/config-manager/blob/master/images/effect2.jpg)
+ 
 ##我的博客
 
 * http://blog.csdn.net/hncdyj/article/
@@ -70,8 +87,9 @@ zk.address=192.168.8.144:2181
 ##关于作者
 
 ```javascript
-  var ihubo = {
+  var info = {
     nickName  : "杰锅锅",
+    introduce : "五年以上码农，算不上资深",
     site : "http://blog.csdn.net/hncdyj/article/"
   }
 ```
@@ -84,5 +102,3 @@ zk.address=192.168.8.144:2181
 
 http://localhost:8080/config-manager-web/index/index.html
 http://localhost:8080/config-manager-web/index/query.html
-http://localhost:8080/config-manager-web/flow/insertConfiguration?groupId=ams&dataId=dev
-http://localhost:8080/config-manager-web/flow/queryConfiguration?groupId=ams&dataId=dev

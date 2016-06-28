@@ -29,6 +29,7 @@
 		<module>modules/config-manager-client</module>
 		<module>modules/config-manager-core</module>
 		<module>modules/config-manager-example</module>
+		<module>modules/config-manager-web</module>
 	</modules>
 
 	<dependencyManagement>
