@@ -11,13 +11,14 @@
 * `zookeeper`配置管理，支持集群。
 * 支持`多点部署`。
 * 无缝切换配置。
+* 如果不是启动就load到内存的配置数据，可以通过`PropertyConfigurer.getString(key);`获取配置。
 
 ##使用说明
 
 ###环境配置准备
 
 * 搭建一个zookeeper环境。
-* git下载源代码。
+* git下载源代码。![url](https://github.com/hncdyj123/config-manager)
 * 切换目录到config-manager下面执行maven install。
 
 ###项目配置
@@ -52,7 +53,7 @@ deploy.dataId=dev
 zk.address=192.168.8.144:2181
 ```
 
-* 在spring配置中新增如下配置：
+* 在spring配置中新增如下配置(加载上一步的properties文件)：
 ```xml
 <bean id="propertyConfigurer" class="com.jzx.config.client.ExtendedPropertyPlaceholderConfigurer">
 	<property name="locations">
@@ -62,6 +63,13 @@ zk.address=192.168.8.144:2181
 	</property>
 </bean>
 ```
+
+* **可能会遇到的问题**
+	* spring包冲突，如果您项目中用的spring包版本大于3.2.8，可以`exclusion` `config-manager` 的spring配置。 
+	* 日志包冲突，`config-manager`里面采用的logback，如果您项目用的是log4j，可以自己桥接到log4j上面去。
+
+
+###web界面的使用
 
 ##我的博客
 
