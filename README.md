@@ -19,7 +19,7 @@
 
 * 搭建一个`zookeeper`环境。
 * 搭建一个`tomcat`环境。
-* git下载源代码。(https://github.com/hncdyj123/config-manager)
+* git下载源代码。(git clone https://github.com/hncdyj123/config-manager.git)
 * 切换目录到config-manager下面执行maven install。
 
 ###项目配置
