@@ -15,7 +15,7 @@
 		<log4j-over-slf4j.version>1.7.6</log4j-over-slf4j.version>
 		<jul-to-slf4j.version>1.7.6</jul-to-slf4j.version>
 		<logback.version>1.1.2</logback.version>
-		<springframework.version>3.2.8.RELEASE</springframework.version>
+		<springframework.version>3.2.9.RELEASE</springframework.version>
 		<commons-lang.version>3.1</commons-lang.version>
 		<servlet.version>2.5</servlet.version>
 		<jackson.version>1.9.10</jackson.version>
@@ -224,4 +224,17 @@
 			<version>${logback.version}</version>
 		</dependency>
 	</dependencies>
+	
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Releases</name>
+			<url>http://192.168.1.10:8081/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Snapshots</name>
+			<url>http://192.168.1.10:8081/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

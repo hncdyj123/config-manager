@@ -5,6 +5,7 @@ import java.io.StringReader;
 import java.util.Properties;
 
 import org.I0Itec.zkclient.IZkDataListener;
+import org.I0Itec.zkclient.exception.ZkNoNodeException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +14,10 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 
 import com.jzx.config.core.ZkClientConnect;
+
 /**
  * spring配置扩展
+ * 
  * @author hncdyj123@163.com
  * @date 2016年6月28日 上午9:14:02
  *
@@ -49,7 +52,11 @@ public class ExtendedPropertyPlaceholderConfigurer extends PropertyPlaceholderCo
 		if (StringUtils.isNotEmpty(group) && StringUtils.isNotEmpty(dataId)) {
 			ZkClientConnect zkClientConnect = new ZkClientConnect(props.getProperty("zk.address"));
 			final String confPath = ZkClientConnect.ROOT_PATH + "/" + group + "-" + dataId;
-			configInfo = (String) zkClientConnect.readData(confPath);
+			try {
+				configInfo = (String) zkClientConnect.readData(confPath);
+			} catch (ZkNoNodeException ex) {
+				logger.warn("配置中心没有找到配置：" + group + " - " + dataId, ex);
+			}
 			if (StringUtils.isEmpty(configInfo)) {
 				logger.warn("配置中心没有找到配置：" + confPath);
 				return;

@@ -124,7 +124,7 @@ public class ZkClientConnect {
 		zkClient.subscribeChildChanges(path, new IZkChildListener() {
 
 			public void handleChildChange(String parentPath, List<String> currentChilds) throws Exception {
-				System.out.println("clildren of path " + parentPath + ":" + currentChilds);
+				LOGGER.warn("clildren of path " + parentPath + ":" + currentChilds);
 			}
 
 		});
@@ -139,11 +139,11 @@ public class ZkClientConnect {
 	public void dataChangesListener(ZkClient zkClient, final String path) {
 		zkClient.subscribeDataChanges(path, new IZkDataListener() {
 			public void handleDataChange(String dataPath, Object data) throws Exception {
-				System.out.println("Data of " + dataPath + " has changed.");
+				LOGGER.warn("Data of " + dataPath + " has changed.");
 			}
 
 			public void handleDataDeleted(String dataPath) throws Exception {
-				System.out.println("Data of " + dataPath + " has changed.");
+				LOGGER.warn("Data of " + dataPath + " has changed.");
 			}
 		});
 	}
@@ -156,33 +156,33 @@ public class ZkClientConnect {
 	public void stateChangesListener(ZkClient zkClient) {
 		zkClient.subscribeStateChanges(new IZkStateListener() {
 			public void handleStateChanged(KeeperState state) throws Exception {
-				System.out.println("handleStateChanged");
+				LOGGER.warn("handleStateChanged");
 			}
 
 			public void handleSessionEstablishmentError(Throwable error) throws Exception {
-				System.out.println("handleSessionEstablishmentError");
+				LOGGER.warn("handleSessionEstablishmentError");
 			}
 
 			public void handleNewSession() throws Exception {
-				System.out.println("handleNewSession");
+				LOGGER.warn("handleNewSession");
 			}
 		});
 	}
 
 	public static void main(String[] args) {
-		ZkClientConnect zkClientConnect = new ZkClientConnect("192.168.8.144:2181");
+		ZkClientConnect zkClientConnect = new ZkClientConnect("192.168.1.11:2181");
 		// 新增
-		zkClientConnect.createNote("/conf/ams-dev", "1=1\n2=2\n3=3");
+		zkClientConnect.createNote("/conf/config-manager-web-dev", "1=1\n2=2\n3=3");
 		// 修改
-		zkClientConnect.updateNote("/conf/ams-dev", "1=11\n2=2\n3=3\nzk.address=192.168.8.144:2181");
+		// zkClientConnect.updateNote("/conf/ams-dev", "1=11\n2=2\n3=3\nzk.address=192.168.8.144:2181");
 		// // 获取
 		// String confStr = (String) zkClientConnect.readData("/myapp");
-		// System.out.println(confStr);
+		// LOGGER.warn(confStr);
 
 		// // 获取节点数据
 		// List<String> pathList = zkClientConnect.getChildren("/");
 		// for (String path : pathList) {
-		// System.out.println(path);
+		// LOGGER.warn(path);
 		// }
 	}
 }

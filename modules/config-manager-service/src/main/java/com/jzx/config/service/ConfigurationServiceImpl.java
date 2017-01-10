@@ -2,8 +2,8 @@ package com.jzx.config.service;
 
 import org.springframework.stereotype.Service;
 
-import com.jzx.config.client.PropertyConfigurer;
 import com.jzx.config.core.ZkClientConnect;
+import com.jzx.config.properties.Properties;
 import com.jzx.config.service.domain.Configuration;
 
 /**
@@ -17,7 +17,7 @@ import com.jzx.config.service.domain.Configuration;
 @Service
 public class ConfigurationServiceImpl implements ConfigurationService {
 
-	private ZkClientConnect zkClientConnect = new ZkClientConnect(PropertyConfigurer.getString("zk.address"));
+	private ZkClientConnect zkClientConnect = new ZkClientConnect(Properties.getString("zk.address"));
 
 	private static String FILEIDF = "/";
 
