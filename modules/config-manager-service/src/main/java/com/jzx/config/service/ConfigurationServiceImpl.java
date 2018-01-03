@@ -17,27 +17,36 @@ import com.jzx.config.service.domain.Configuration;
 @Service
 public class ConfigurationServiceImpl implements ConfigurationService {
 
-	private ZkClientConnect zkClientConnect = new ZkClientConnect(Properties.getString("zk.address"));
-
 	private static String FILEIDF = "/";
 
 	private static String FILEIDF_ = "-";
 
 	public boolean insertConfiguration(Configuration configuration) {
-		return zkClientConnect.createNote(zkClientConnect.ROOT_PATH + FILEIDF + configuration.getGroupId() + FILEIDF_ + configuration.getDataId(), configuration.getConfiguration());
+		ZkClientConnect zkClientConnect = new ZkClientConnect(Properties.getString("zk.address"));
+		boolean result = zkClientConnect.createNote(zkClientConnect.ROOT_PATH + FILEIDF + configuration.getGroupId() + FILEIDF_ + configuration.getDataId(), configuration.getConfiguration());
+		zkClientConnect.closeZkClient();
+		return result;
 	}
 
 	public boolean updateConfiguration(Configuration configuration) {
-		return zkClientConnect.updateNote(zkClientConnect.ROOT_PATH + FILEIDF + configuration.getGroupId() + FILEIDF_ + configuration.getDataId(), configuration.getConfiguration());
+		ZkClientConnect zkClientConnect = new ZkClientConnect(Properties.getString("zk.address"));
+		boolean result = zkClientConnect.updateNote(zkClientConnect.ROOT_PATH + FILEIDF + configuration.getGroupId() + FILEIDF_ + configuration.getDataId(), configuration.getConfiguration());
+		zkClientConnect.closeZkClient();
+		return result;
 	}
 
 	public boolean deleteConfiguration(Configuration configuration) {
-		return zkClientConnect.deleteNote(zkClientConnect.ROOT_PATH + FILEIDF + configuration.getGroupId() + FILEIDF_ + configuration.getDataId());
+		ZkClientConnect zkClientConnect = new ZkClientConnect(Properties.getString("zk.address"));
+		boolean result = zkClientConnect.deleteNote(zkClientConnect.ROOT_PATH + FILEIDF + configuration.getGroupId() + FILEIDF_ + configuration.getDataId());
+		zkClientConnect.closeZkClient();
+		return result;
 	}
 
 	public Configuration queryConfiguration(Configuration configuration) {
+		ZkClientConnect zkClientConnect = new ZkClientConnect(Properties.getString("zk.address"));
 		String configurationStr = (String) zkClientConnect.readData(zkClientConnect.ROOT_PATH + FILEIDF + configuration.getGroupId() + FILEIDF_ + configuration.getDataId());
 		configuration.setConfiguration(configurationStr);
+		zkClientConnect.closeZkClient();
 		return configuration;
 	}
 

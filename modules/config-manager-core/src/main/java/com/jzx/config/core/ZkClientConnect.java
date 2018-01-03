@@ -185,4 +185,14 @@ public class ZkClientConnect {
 		// LOGGER.warn(path);
 		// }
 	}
+
+	public void closeZkClient() {
+		try {
+			if (zkClient != null) {
+				zkClient.close();
+			}
+		} catch (Exception e) {
+			LOGGER.error("closeZkClient()执行失败：{}", e);
+		}
+	}
 }
