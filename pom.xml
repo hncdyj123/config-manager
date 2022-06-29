@@ -8,7 +8,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<zookeeper.version>3.4.6</zookeeper.version>
+		<zookeeper.version>3.4.14</zookeeper.version>
 		<zkclient.version>0.4</zkclient.version>
 		<slf4j-api.version>1.7.6</slf4j-api.version>
 		<jcl-over-slf4j.version>1.7.6</jcl-over-slf4j.version>
